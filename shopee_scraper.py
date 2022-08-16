@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from time import sleep
@@ -11,7 +12,7 @@ chrome_options = Options()
 sendgrid_api_key = "<YOUR_SENDGRID_API_KEY>"
 url = 'https://shopee.com.my/product/724335/2212828002'
 
-driver = webdriver.Chrome(<YOUR_CHROMEDRIVER_EXE_PATH>)
+driver = webdriver.Chrome(service = Service( <YOUR_CHROMEDRIVER_EXE_PATH> ))
 
 driver.get(url)
 

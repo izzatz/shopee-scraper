@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
 from time import sleep
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
@@ -14,13 +15,16 @@ driver = webdriver.Chrome(<YOUR_CHROMEDRIVER_EXE_PATH>)
 
 driver.get(url)
 
+sleep(1)
+
 # click the english language button
-driver.find_element_by_xpath("""//*[@id="modal"]/div[1]/div[1]/div/div[3]/div[1]/button""").click()
+driver.find_element(By.XPATH, """//*[@id="modal"]/div[1]/div[1]/div/div[3]/div[1]/button""").click()
 
 sleep(3)
 
 # stock reading count on the product detail section
-out = driver.find_element_by_xpath("""//*[@id="main"]/div/div[2]/div[2]/div[2]/div[3]/div[2]/div[1]/div[1]/div[1]/div[2]/div[7]/div""").text
+read_stock = """//*[@id="main"]/div/div[2]/div[1]/div/div[1]/div/div[2]/div[3]/div/div[4]/div/div[4]/div/div[3]/div[2]/div[2]"""
+out = driver.find_element(By.XPATH, read_stock).text
 
 if out == "0":
     print("Product still out of stock")
